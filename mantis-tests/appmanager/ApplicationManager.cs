@@ -11,14 +11,14 @@ namespace mantis_tests
         protected IWebDriver driver;
         private StringBuilder verificationErrors;
         protected LoginHelper loginHelper;
+        protected ManagementMenuHelper managementMenuHelper;
+        protected ProjectManagementHelper projectManagementHelper;
         protected string baseURL;
 
         public RegistrationHelper Registration { get; set; }
         public FtpHelper Ftp { get; set; }
         public JamesHelper James { get; set; }
         public MailHelper Mail { get; set; }
-        public ManagementMenuHelper Management { get; set; }
-        public ProjectManagementHelper Project { get; set; }
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
@@ -31,8 +31,8 @@ namespace mantis_tests
             James = new JamesHelper(this);
             Mail = new MailHelper(this);
             loginHelper = new LoginHelper(this);
-            Management = new ManagementMenuHelper(this);
-            Project = new ProjectManagementHelper(this);
+            managementMenuHelper = new ManagementMenuHelper(this, baseURL);
+            projectManagementHelper = new ProjectManagementHelper(this);
         }
          ~ApplicationManager()
         {
@@ -69,6 +69,22 @@ namespace mantis_tests
             get
             {
                 return loginHelper;
+            }
+        }
+
+        public ManagementMenuHelper managementMenu
+        {
+            get
+            {
+                return managementMenuHelper;
+            }
+        }
+
+        public ProjectManagementHelper projectManagement
+        {
+            get
+            {
+                return projectManagementHelper;
             }
         }
     }

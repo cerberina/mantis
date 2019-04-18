@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace mantis_tests.tests
+namespace mantis_tests
 {
     [TestFixture]
     public class CreateProject: TestBase
@@ -17,14 +17,11 @@ namespace mantis_tests.tests
         [Test]
         public void CreateNewProject()
         {
-            AccountData account = new AccountData() { Name = "administrator", Password = "root" };
-            app.Auth.Login(account);
-            OpenManagePage();
-            SelectManageProjectsTab();
-            InitializeCreation();
-            FillProjectForm();
-            ClickSubmitButton();
-            app.Auth.Logout();
+            ProjectData project = new ProjectData()
+            {
+                Name = "test_project"
+            };
+            app.projectManagement.Create(project);
         }
     }
 }
