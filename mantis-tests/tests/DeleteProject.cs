@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace mantis_tests.tests
 {
     [TestFixture]
-    public class UnitTest1: TestBase
+    public class DeleteProject: TestBase
     {
         [Test]
         public void TestMethod1()
