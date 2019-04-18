@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
+using System.IO;
 using NUnit.Framework;
 
 namespace mantis_tests
@@ -11,8 +12,11 @@ namespace mantis_tests
         [OneTimeSetUp]
         public void setUpConfig()
         {
-            app.Ftp.BackupFile("");
-            app.Ftp.Upload("", null);
+            app.Ftp.BackupFile("/config_inc.php");
+            using (Stream localFile = File.Open("config_inc.php", FileMode.Open))
+            {
+                 app.Ftp.Upload("/config_inc.php", localFile);
+            }
 
         }
 
@@ -34,7 +38,7 @@ namespace mantis_tests
 
         public void restoreConfig()
         {
-            app.Ftp.RestoreBackupFile("");
+            app.Ftp.RestoreBackupFile("/config_inc.php");
         }
     }
 }
