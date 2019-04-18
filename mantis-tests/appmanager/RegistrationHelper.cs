@@ -27,7 +27,7 @@ namespace mantis_tests
 
         private void SubmitRegistration()
         {
-            throw new NotImplementedException();
+            driver.FindElement(By.XPath("//form[@id='signup-form']/fieldset/input[2]")).Click(); 
         }
 
         private void FillRegistrationForm(AccountData account)

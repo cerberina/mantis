@@ -13,7 +13,8 @@ namespace mantis_tests
         public void setUpConfig()
         {
             app.Ftp.BackupFile("/config_inc.php");
-            using (Stream localFile = File.Open("config_inc.php", FileMode.Open))
+            string path = TestContext.CurrentContext.WorkDirectory;
+            using (Stream localFile = File.Open(path+@"\config_inc.php", FileMode.Open))
             {
                  app.Ftp.Upload("/config_inc.php", localFile);
             }
