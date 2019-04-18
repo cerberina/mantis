@@ -13,10 +13,6 @@ namespace mantis_tests
 
         public void Login(AccountData account)
         {
-            if (IsLoggedIn())
-            {
-                Logout();
-            }
             Type(By.Name("username"), account.Name);
             driver.FindElement(By.XPath("//form[@id='login-form']/fieldset/input[2]")).Click();
             Type(By.Name("password"), account.Password);
@@ -28,11 +24,6 @@ namespace mantis_tests
         {
             driver.FindElement(By.XPath("//div[@id='navbar-container']/div[2]/ul/li[3]/a/i[2]")).Click();
             driver.FindElement(By.XPath("//a[contains(@href, '/mantisbt-2.20.0/logout_page.php')]")).Click();
-        }
-
-        public bool IsLoggedIn()
-        {
-            return IsElementPresent(By.XPath("//div[@id='navbar-container']/div[2]/ul/li[3]/a/span"));
         }
     }
 }

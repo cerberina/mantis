@@ -25,7 +25,7 @@ namespace mantis_tests
         private ApplicationManager ()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://10.0.2.2/addressbook/";
+            baseURL = "http://localhost:8080/mantisbt-2.20.0/login_page.php";
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);
             James = new JamesHelper(this);

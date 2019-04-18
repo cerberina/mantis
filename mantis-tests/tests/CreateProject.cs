@@ -13,7 +13,18 @@ namespace mantis_tests.tests
             AccountData account = new AccountData() {Name = "administrator", Password = "root"};
             app.Auth.Login(account);
             app.Auth.Logout();
-
+        }
+        [Test]
+        public void CreateNewProject()
+        {
+            AccountData account = new AccountData() { Name = "administrator", Password = "root" };
+            app.Auth.Login(account);
+            OpenManagePage();
+            SelectManageProjectsTab();
+            InitializeCreation();
+            FillProjectForm();
+            ClickSubmitButton();
+            app.Auth.Logout();
         }
     }
 }
