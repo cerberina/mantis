@@ -23,6 +23,37 @@ namespace mantis_tests
             ClickSubmitButton();
         }
 
+        public void Delete()
+        {
+            OpenManagePage();
+            SelectManageProjectsTab();
+            SelectProjectFromTheList();
+            InitiateDeleteProject();
+            ClickSubmitDeletionButton();
+        }
+
+        private ProjectManagementHelper ClickSubmitDeletionButton()
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[4]")));
+            driver.FindElement(By.XPath("//input[4]")).Click();
+            return this;
+        }
+
+        private ProjectManagementHelper InitiateDeleteProject()
+        {
+            driver.FindElement(By.XPath("//form[@id='project-delete-form']/fieldset/input[3]")).Click();
+            return this;
+        }
+
+        private ProjectManagementHelper SelectProjectFromTheList()
+        {
+            driver.FindElement(By.XPath("//td/a")).Click();
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//form[@id='manage-proj-update-form']/div/div/h4")));
+            return this;
+        }
+
         public ProjectManagementHelper ClickSubmitButton()
         {
             driver.FindElement(By.XPath("//form[@id='manage-project-create-form']/div/div[3]/input")).Click();
@@ -53,6 +84,22 @@ namespace mantis_tests
         {
             manager.managementMenu.GoToManagementPage();
             return this;
+        }
+
+        public void EnsureThatProjectExists()
+        {
+            List<ProjectData> projects = GetProjectList();
+            if (!IsProjectExists())
+            {
+                ProjectData proj = new ProjectData("new_project");
+                Create(proj);
+            }
+
+        }
+
+        public bool IsProjectExists()
+        {
+            return GetProjectList().Count != 0;
         }
 
         public List<ProjectData> GetProjectList()

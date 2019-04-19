@@ -90,9 +90,9 @@
     <Compile Include="appmanager\TelnetInterface.cs" />
     <Compile Include="tests\AccountCreationTests.cs" />
     <Compile Include="tests\AuthTestBase.cs" />
-    <Compile Include="tests\DeleteProject.cs" />
+    <Compile Include="tests\DeleteProjectTests.cs" />
     <Compile Include="tests\TestBase.cs" />
-    <Compile Include="tests\CreateProject.cs" />
+    <Compile Include="tests\CreateProjectTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

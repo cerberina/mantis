@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 namespace mantis_tests
 {
     [TestFixture]
-    public class CreateProject: AuthTestBase
+    public class CreateProjectTests: AuthTestBase
     {
         [Test]
         public void LoginAndLogout()
@@ -18,7 +18,6 @@ namespace mantis_tests
         [Test]
         public void CreateNewProject()
         {
-            //app.Auth.Login(account);
             ProjectData project = new ProjectData("test_project5");
             List<ProjectData> oldProjects = app.projectManagement.GetProjectList();
 
