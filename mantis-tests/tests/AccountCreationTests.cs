@@ -25,10 +25,8 @@ namespace mantis_tests
         [Test]
         public void TestAccountRegistration()
         {
-            AccountData account = new AccountData()
+            AccountData account = new AccountData("testuser3", "password")
             {
-                Name = "testuser3",
-                Password = "password",
                 Email = "testuser3@localhost.localdomain"
             };
 

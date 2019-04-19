@@ -27,12 +27,12 @@ namespace mantis_tests
         public void GoToManagementPage()
         {
             GoToHomePage();
-            driver.FindElement(By.XPath("//a[contains(@href='/mantisbt-2.20.0/manage_overview_page.php')]")).Click();
+            driver.FindElement(By.CssSelector("i.menu-icon.fa.fa-gears")).Click();
         }
 
         public void GoToProjectPage()
         {
-            driver.FindElement(By.XPath("//a[contains(@href='/mantisbt-2.20.0/manage_proj_page.php')]")).Click();
+            driver.FindElement(By.XPath("//div[2]/div[2]/div/ul/li[3]/a")).Click();
         }
 
     }

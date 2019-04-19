@@ -3,6 +3,7 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace mantis_tests
 {
