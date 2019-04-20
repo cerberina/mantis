@@ -126,5 +126,27 @@ namespace mantis_tests
 
             return projects;
         }
+
+        //public List<ProjectData> GetProjectList()
+        //{
+        //    List<ProjectData> projects = new List<ProjectData>();
+        //    manager.managementMenu.GoToManagementPage();
+        //    manager.managementMenu.GoToProjectPage();
+
+        //    IWebElement table = driver.FindElement(By.ClassName("table-responsive"));
+        //    IWebElement body = table.FindElement(By.TagName("tbody"));
+
+        //    ICollection<IWebElement> elements = body.FindElements(By.TagName("tr"));
+        //    foreach (IWebElement element in elements)
+        //    {
+        //        ICollection<IWebElement> cellElements = element.FindElements(By.TagName("td"));
+        //        IWebElement[] projectCells = new IWebElement[cellElements.Count];
+        //        cellElements.CopyTo(projectCells, 0);
+
+        //        projects.Add(new ProjectData(projectCells[0].Text));
+        //    }
+
+        //    return projects;
+        //}
     }
 }
