@@ -11,11 +11,13 @@ namespace mantis_tests
         public string Email { get; set; }
 
         private string name;
+
         private string password;
-        public AccountData(string name, string password)
+        public string Id { get; set; }
+
+        public AccountData(string name)
         {
             this.name = name;
-            this.password = password;
         }
 
         public string Name
@@ -41,5 +43,6 @@ namespace mantis_tests
                 password = value;
             }
         }
+
     }
 }

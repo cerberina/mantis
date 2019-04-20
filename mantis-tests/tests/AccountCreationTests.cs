@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework;
+using SimpleBrowser;
 
 namespace mantis_tests
 {
@@ -25,11 +26,19 @@ namespace mantis_tests
         [Test]
         public void TestAccountRegistration()
         {
-            AccountData account = new AccountData("testuser3", "password")
+            AccountData account = new AccountData("testuser5")
             {
-                Email = "testuser3@localhost.localdomain"
+                Password = "password",
+                Email = "testuser5@localhost.localdomain"
             };
 
+            List<AccountData> accounts = app.Admin.GetAllAccounts();
+
+            AccountData existingAccount = accounts.Find(x =>x.Name==account.Name);
+            if (existingAccount != null)
+            {
+                app.Admin.DeleteAccount(existingAccount);
+            }
 
             app.James.Delete(account);
             app.James.Add(account);

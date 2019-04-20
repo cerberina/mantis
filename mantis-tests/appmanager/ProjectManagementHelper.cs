@@ -14,7 +14,10 @@ namespace mantis_tests
 
         public void Create(ProjectData project)
         {
-            AccountData account = new AccountData("administrator", "root");
+            AccountData account = new AccountData("administrator")
+            {
+                Password = "root"
+            };
 
             OpenManagePage();
             SelectManageProjectsTab();

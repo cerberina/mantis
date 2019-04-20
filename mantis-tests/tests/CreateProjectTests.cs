@@ -11,7 +11,10 @@ namespace mantis_tests
         [Test]
         public void LoginAndLogout()
         {
-            AccountData account = new AccountData("administrator", "root");
+            AccountData account = new AccountData("administrator")
+            {
+                Password = "root"
+            };
             app.Auth.Login(account);
             app.Auth.Logout();
         }
