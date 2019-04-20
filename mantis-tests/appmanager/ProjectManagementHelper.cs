@@ -89,13 +89,14 @@ namespace mantis_tests
             return this;
         }
 
-        public void EnsureThatProjectExists()
+        public void EnsureThatProjectExists(AccountData account, ProjectData project)
         {
             List<ProjectData> projects = GetProjectList();
             if (!IsProjectExists())
             {
                 ProjectData proj = new ProjectData("new_project");
-                Create(proj);
+                manager.API.CreateNewProject(account,project);
+                //Create(proj);
             }
 
         }

@@ -25,19 +25,27 @@ namespace mantis_tests
         public List<ProjectData> GetProjectsList(AccountData account)
         {
             Mantis.MantisConnectPortTypeClient client = new Mantis.MantisConnectPortTypeClient();
-            //string[] project_data = new string;
+            
             List<ProjectData> projects_list = new List<ProjectData>();
-            ProjectData project = new ProjectData();
 
             Mantis.ProjectData[] projects = client.mc_projects_get_user_accessible(account.Name, account.Password);
          
             foreach (Mantis.ProjectData proj in projects)
             {
+                ProjectData project = new ProjectData();
                 project.Id = proj.id;
                 project.Name = proj.name;
                 projects_list.Add(project);
             }
             return projects_list;
+        }
+
+        public void CreateNewProject(AccountData account, ProjectData project)
+        {
+            Mantis.MantisConnectPortTypeClient client = new Mantis.MantisConnectPortTypeClient();
+            Mantis.ProjectData newProject = new Mantis.ProjectData();
+            newProject.name = project.Name;
+            client.mc_project_add(account.Name, account.Password, newProject);
         }
     }
 }

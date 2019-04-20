@@ -10,20 +10,23 @@ namespace mantis_tests
         [Test]
         public void DeleteProject()
         {
-            ProjectData project = new ProjectData("test_project5");
+            AccountData account = new AccountData("administrator") { Password = "root" };
+            ProjectData project = new ProjectData("empty");
 
-                app.projectManagement.EnsureThatProjectExists();
-                List<ProjectData> oldProjects = app.projectManagement.GetProjectList();
-            
-                app.projectManagement.Delete();
+            app.projectManagement.EnsureThatProjectExists(account, project);
+            //List<ProjectData> oldProjects = app.projectManagement.GetProjectList();
+            List<ProjectData> oldProjects = app.API.GetProjectsList(account);
+            app.projectManagement.Delete();
 
-                List<ProjectData> newProjects = app.projectManagement.GetProjectList();
-                oldProjects.RemoveAt(0);
-                oldProjects.Sort();
-                newProjects.Sort();
+            //List<ProjectData> newProjects = app.projectManagement.GetProjectList();
+            List<ProjectData> newProjects = app.API.GetProjectsList(account);
 
-                Assert.AreEqual(oldProjects, newProjects);
-            }
+            oldProjects.RemoveAt(0);
+            oldProjects.Sort();
+            newProjects.Sort();
+
+            Assert.AreEqual(oldProjects, newProjects);
+        }
 
     }
 }
